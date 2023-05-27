@@ -61,7 +61,7 @@
         @csrf
         <!-- Nama -->
         <div class="mb-6 flex flex-col gap-1">
-          <x-input-label for="nama" :value="__('nama')" />
+          <x-input-label for="nama" :value="__('Nama')" />
           <x-text-input id="nama" class="block mt-1 w-full" type="text" name="nama" :value="old('nama')"
             placeholder="Masukkan nama anda" required autofocus autocomplete="nama" />
           <x-input-error :messages="$errors->get('nama')" class="mt-2" />
@@ -69,7 +69,7 @@
 
         <!-- NIM -->
         <div class="mb-6 flex flex-col gap-1">
-          <x-input-label for="nim" :value="__('nim')" />
+          <x-input-label for="nim" :value="__('NIM')" />
           <x-text-input id="nim" class="block mt-1 w-full" type="text" name="nim" :value="old('nim')"
             placeholder="Masukkan nim anda" required autofocus autocomplete="nim" />
           <x-input-error :messages="$errors->get('nim')" class="mt-2" />
@@ -77,10 +77,18 @@
 
         <!-- No HP -->
         <div class="mb-6 flex flex-col gap-1">
-          <x-input-label for="no_hp" :value="__('no_hp')" />
+          <x-input-label for="no_hp" :value="__('No HP')" />
           <x-text-input id="no_hp" class="block mt-1 w-full" type="text" name="no_hp" :value="old('no_hp')"
             placeholder="Masukkan nomor hp anda" required autofocus autocomplete="no_hp" />
           <x-input-error :messages="$errors->get('no_hp')" class="mt-2" />
+        </div>
+
+        <!-- Username -->
+        <div class="mb-6 flex flex-col gap-1">
+          <x-input-label for="username" :value="__('Username')" />
+          <x-text-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')"
+            placeholder="Masukkan username anda" required autofocus autocomplete="username" />
+          <x-input-error :messages="$errors->get('username')" class="mt-2" />
         </div>
 
         <!-- Email -->
@@ -91,10 +99,18 @@
           <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
-        <!--  -->
+        <!-- Password -->
         <div class="mb-6 flex flex-col gap-1">
           <x-input-label for="password" :value="__('Password')" />
           <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" :value="old('password')"
+            placeholder="Masukkan password anda" required autofocus autocomplete="password" />
+          <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        </div>
+
+        <!-- Password -->
+        <div class="mb-6 flex flex-col gap-1">
+          <x-input-label for="password_confirmation" :value="__('Password Confirmation')" />
+          <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" :value="old('password')"
             placeholder="Masukkan password anda" required autofocus autocomplete="password" />
           <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
