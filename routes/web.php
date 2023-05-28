@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PeminjamanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +20,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'user'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('user.dashboard');
+    })->name('dashboard');
+
+    Route::prefix('/peminjaman')->group(function () {
+        Route::get('/', [PeminjamanController::class, 'index'])->name('peminjaman.index');
+        Route::post('/', [PeminjamanController::class, 'store'])->name('peminjaman.store');
+    });
+
+    Route::prefix('/barang')->group(function () {
+        Route::get('/', [BarangController::class, 'index'])->name('barang.index');
+        Route::get('/{barang}', [BarangController::class, 'show'])->name('barang.show');
+    });
+});
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -28,4 +43,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
