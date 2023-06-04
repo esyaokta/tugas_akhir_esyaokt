@@ -10,4 +10,12 @@ class BarangController extends Controller
         return view('user.barang');
     }
 
+    public function adminIndex(){
+        return view('admin.barang');
+    }
+
+    public function create(){
+        return view('admin.barang.create');
+    }
+
 }

@@ -16,9 +16,9 @@ use App\Http\Controllers\PeminjamanController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/dashboard', function () {
@@ -33,6 +33,25 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::prefix('/barang')->group(function () {
         Route::get('/', [BarangController::class, 'index'])->name('barang.index');
         Route::get('/{barang}', [BarangController::class, 'show'])->name('barang.show');
+    });
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::prefix('/admin')->group(function () {
+        Route::get('/dashboard', function () {
+            return view('admin.dashboard');
+        })->name('admin.dashboard');
+
+        Route::prefix('/peminjaman')->group(function () {
+            Route::get('/', [PeminjamanController::class, 'index'])->name('admin.peminjaman.index');
+            Route::get('/{peminjaman}', [PeminjamanController::class, 'show'])->name('admin.peminjaman.show');
+            Route::patch('/{peminjaman}', [PeminjamanController::class, 'update'])->name('admin.peminjaman.update');
+        });
+
+        Route::prefix('/barang')->group(function () {
+            Route::get('/', [BarangController::class, 'adminIndex'])->name('admin.barang.index');
+            Route::get('/create', [BarangController::class, 'create'])->name('admin.barang.create');
+        });
     });
 });
 
