@@ -17,6 +17,8 @@ return new class extends Migration
             $table->date('tanggal_pinjam');
             $table->time('jam_pinjam');
             $table->time('jam_selesai');
+            $table->enum('persetujuan', ['Disetujui', 'Ditolak', 'Menunggu'])->default('Menunggu');
+            $table->string('alasan')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();

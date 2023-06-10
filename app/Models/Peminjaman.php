@@ -21,6 +21,8 @@ class Peminjaman extends Model
         'tanggal_pinjam',
         'jam_pinjam',
         'jam_selesai',
+        'persetujuan',
+        'alasan',
         'user_id',
     ];
 

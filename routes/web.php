@@ -53,6 +53,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
         Route::prefix('/peminjaman')->group(function () {
             Route::get('/', [PeminjamanController::class, 'adminIndex'])->name('admin.peminjaman.index');
+            Route::post('/{id}/update', [PeminjamanController::class, 'update'])->name('admin.peminjaman.update');
 
         });
     });
