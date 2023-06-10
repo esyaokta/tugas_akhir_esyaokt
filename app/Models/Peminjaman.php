@@ -14,6 +14,8 @@ class Peminjaman extends Model
      *
      * @var array<int, string>
      */
+    protected $table = 'peminjamans';
+
     protected $fillable = [
         'nama_kegiatan',
         'tanggal_pinjam',
@@ -25,5 +27,10 @@ class Peminjaman extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function barang()
+    {
+        return $this->belongsTo(Barang::class);
     }
 }

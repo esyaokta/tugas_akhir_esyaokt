@@ -64,6 +64,26 @@ class UserSeeder extends Seeder
                 'password' => bcrypt('password'),
                 'cekkode' => "0",
             ],
+            [
+                'id' => 15,
+                'nama' => 'admin',
+                'nim' => 0213,
+                'no_hp' => '0896579829',
+                'email' => 'admin@admin.com',
+                'username' => 'admin',
+                'password' => bcrypt('password'),
+                'cekkode' => "0",
+            ],
+            [
+                'id' => 16,
+                'nama' => 'user',
+                'nim' => 0214,
+                'no_hp' => '0896579829',
+                'email' => 'user@user.com',
+                'username' => 'user',
+                'password' => bcrypt('password'),
+                'cekkode' => "1",
+            ]
         ];
 
         foreach ($user as $key => $value) {

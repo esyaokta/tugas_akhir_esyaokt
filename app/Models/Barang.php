@@ -20,6 +20,7 @@ class Barang extends Model
         'merek',
         'jumlah_barang',
         'tanggal_masuk',
+        'tanggal_keluar',
         'kondisi_barang',
     ];
 }

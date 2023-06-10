@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PeminjamanController;
 
@@ -38,19 +39,21 @@ Route::middleware(['auth', 'user'])->group(function () {
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::prefix('/admin')->group(function () {
-        Route::get('/dashboard', function () {
-            return view('admin.dashboard');
-        })->name('admin.dashboard');
+        Route::get('/dashboard', [LaporanController::class, 'dashboard'])->name('admin.dashboard');
 
-        Route::prefix('/peminjaman')->group(function () {
-            Route::get('/', [PeminjamanController::class, 'index'])->name('admin.peminjaman.index');
-            Route::get('/{peminjaman}', [PeminjamanController::class, 'show'])->name('admin.peminjaman.show');
-            Route::patch('/{peminjaman}', [PeminjamanController::class, 'update'])->name('admin.peminjaman.update');
+        Route::prefix('/laporan')->group(function () {
+            Route::get('/', [LaporanController::class, 'index'])->name('admin.laporan.index');
         });
 
         Route::prefix('/barang')->group(function () {
             Route::get('/', [BarangController::class, 'adminIndex'])->name('admin.barang.index');
             Route::get('/create', [BarangController::class, 'create'])->name('admin.barang.create');
+            Route::post('/', [BarangController::class, 'store'])->name('admin.barang.store');
+        });
+
+        Route::prefix('/peminjaman')->group(function () {
+            Route::get('/', [PeminjamanController::class, 'adminIndex'])->name('admin.peminjaman.index');
+
         });
     });
 });

@@ -33,7 +33,7 @@
       <div class="ml-[368px] py-7 px-6">
         <!-- Page Heading -->
         @if (isset($header))
-          <header class="mb-10">
+          <header class="mb-16">
             {{ $header }}
           </header>
         @endif

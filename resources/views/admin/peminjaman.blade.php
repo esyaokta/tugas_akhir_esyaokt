@@ -1,50 +1,37 @@
 <x-admin.app>
-  <x-slot name="header">
-    <h2 class="font-semibold text-3xl text-gray-800 leading-tight">
-      {{ __('Barang') }}
-    </h2>
-  </x-slot>
-
-  <div class="flex flex-col justify-center gap-10">
-
-      <div class="flex justify-between">
-        <h2 class="text-2xl font-semibold">Data Barang</h2>
-        <div class="flex h-10">
-          <a href="{{ route('admin.barang.create') }}" class="bg-gray-300 hover:bg-gray-400 transition-all duration-200 flex items-center gap-3 px-4 h-full">
-            <i class="fa-solid fa-plus px-2"></i>
-            <span class="border-r border-black h-full"></span>
-            Tambah Barang
-          </a>
-        </div>
-      </div>
+    <x-slot name="header">
+        <h2 class="font-semibold text-3xl text-gray-800 leading-tight">
+          {{ __('Approval Peminjaman') }}
+        </h2>
+      </x-slot>
 
       <div class="relative overflow-x-auto">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border border-black">
           <thead class="text-base text-gray-700 uppercase bg-[#FFFCFC] dark:bg-gray-700 dark:text-gray-400 border-b border-black">
             <tr>
               <th scope="col" class="px-6 py-3 border-r border-black">
-                id
+                Id
               </th>
               <th scope="col" class="px-6 py-3 border-r border-black">
-                jenis
+                NIM
               </th>
               <th scope="col" class="px-6 py-3 border-r border-black">
-                kategori
+                Nama
               </th>
               <th scope="col" class="px-6 py-3 border-r border-black">
-                merek
+                No HP
               </th>
               <th scope="col" class="px-6 py-3 border-r border-black">
-                jumlah
+                Nama kegiatan
               </th>
               <th scope="col" class="px-6 py-3 border-r border-black">
-                tgl masuk
+                Tanggal pinjam
               </th>
               <th scope="col" class="px-6 py-3 border-r border-black">
-                tgl keluar
+                Jam pinjam
               </th>
               <th scope="col" class="px-6 py-3 border-r border-black">
-                kondisi
+                Jam selesai
               </th>
               <th scope="col" class="px-6 py-3">
                 aksi
@@ -52,44 +39,36 @@
             </tr>
           </thead>
           <tbody>
-            @foreach ($barang as $b)
             <tr class="bg-[#FFFCFC] dark:bg-gray-800 dark:border-gray-700 border-b border-black">
               <th scope="row" class="px-6 py-4 border-r border-black ">
-                {{ $loop->iteration }}
+                1
               </th>
-              <td class="px-6 py-4 border-r border-black capitalize">
-                {{ $b->jenis_barang }}
-              </td>
-              <td class="px-6 py-4 border-r border-black capitalize">
-                {{ $b->kategori }}
+              <td class="px-6 py-4 border-r border-black">
+                Meja
               </td>
               <td class="px-6 py-4 border-r border-black">
-                {{ $b->merek }}
+                Perabotan kantor
               </td>
               <td class="px-6 py-4 border-r border-black">
-                {{ $b->jumlah_barang }}
+                None
               </td>
               <td class="px-6 py-4 border-r border-black">
-                {{ $b->tanggal_masuk }}
+                4
               </td>
               <td class="px-6 py-4 border-r border-black">
-                {{ $b->tanggal_keluar ?? '-' }}
+                2022-12-01
               </td>
-              <td class="px-6 py-4 border-r border-black capitalize">
-                {{ $b->kondisi_barang }}
+              <td class="px-6 py-4 border-r border-black">
+                2022-12-01
               </td>
-              <td class="px-6 py-4 flex justify-center">
+              <td class="px-6 py-4 border-r border-black">
+                Baik
+              </td>
+              <td class="px-6 py-4">
                 <i class="fa-regular fa-pen-to-square"></i>
               </td>
             </tr>
-          @endforeach
           </tbody>
         </table>
-        <div class="my-4">
-            {{ $barang->links() }}
-        </div>
       </div>
-  </div>
-
-
 </x-admin.app>
