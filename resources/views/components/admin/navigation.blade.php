@@ -6,7 +6,7 @@
   <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
     class="w-1/6 flex pl-14 gap-4 items-center text-2xl border-l border-black" type="button">
     <i class="fa-solid fa-circle-user fa-xl"></i>
-    <h2 class="font-semibold">Admin</h2>
+    <h2 class="font-semibold capitalize">{{ Auth::user()->nama }}</h2>
   </button>
 </div>
 

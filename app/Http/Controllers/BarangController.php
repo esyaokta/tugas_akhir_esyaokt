@@ -10,7 +10,9 @@ use App\Http\Controllers\Controller;
 class BarangController extends Controller
 {
     public function index(){
-        return view('user.barang');
+        $barang = Barang::orderBy('created_at', 'desc')->paginate(10);
+
+        return view('user.barang', compact('barang'));
     }
 
     public function adminIndex(){
@@ -31,7 +33,6 @@ class BarangController extends Controller
             'merek' => 'required',
             'jumlah_barang' => 'required',
             'tanggal_masuk' => 'required',
-            'tanggal_keluar' => 'required',
             'kondisi_barang' => 'required',
         ]);
 
@@ -41,7 +42,6 @@ class BarangController extends Controller
             'merek' => $request->merek,
             'jumlah_barang' => $request->jumlah_barang,
             'tanggal_masuk' => $request->tanggal_masuk,
-            'tanggal_keluar' => $request->tanggal_keluar,
             'kondisi_barang' => $request->kondisi_barang,
         ]);
 

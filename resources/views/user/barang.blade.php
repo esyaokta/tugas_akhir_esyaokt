@@ -41,114 +41,40 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="border-b bg-gray-200 dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  1
-                </th>
-                <td class="px-6 py-4 font-bold text-green-600">
-                  1
-                </td>
-                <td class="px-6 py-4">
-                  Meja Komputer Abu-abu
-                </td>
-                <td class="px-6 py-4">
-                  Peralatan Kantor
-                </td>
-                <td class="px-6 py-4">
-                  tidak ada
-                </td>
-                <td class="px-6 py-4">
-                  2
-                </td>
-                <td class="px-6 py-4">
-                  2023-04-10
-                </td>
-                <td class="px-6 py-4">
-                  baik
-                </td>
-              </tr>
-              <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  1
-                </th>
-                <td class="px-6 py-4 font-bold text-green-600">
-                  1
-                </td>
-                <td class="px-6 py-4">
-                  Meja Komputer Abu-abu
-                </td>
-                <td class="px-6 py-4">
-                  Peralatan Kantor
-                </td>
-                <td class="px-6 py-4">
-                  tidak ada
-                </td>
-                <td class="px-6 py-4">
-                  2
-                </td>
-                <td class="px-6 py-4">
-                  2023-04-10
-                </td>
-                <td class="px-6 py-4">
-                  baik
-                </td>
-              </tr>
-              <tr class="border-b bg-gray-200 dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  1
-                </th>
-                <td class="px-6 py-4 font-bold text-green-600">
-                  1
-                </td>
-                <td class="px-6 py-4">
-                  Meja Komputer Abu-abu
-                </td>
-                <td class="px-6 py-4">
-                  Peralatan Kantor
-                </td>
-                <td class="px-6 py-4">
-                  tidak ada
-                </td>
-                <td class="px-6 py-4">
-                  2
-                </td>
-                <td class="px-6 py-4">
-                  2023-04-10
-                </td>
-                <td class="px-6 py-4">
-                  baik
-                </td>
-              </tr>
-              <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  1
-                </th>
-                <td class="px-6 py-4 font-bold text-green-600">
-                  1
-                </td>
-                <td class="px-6 py-4">
-                  Meja Komputer Abu-abu
-                </td>
-                <td class="px-6 py-4">
-                  Peralatan Kantor
-                </td>
-                <td class="px-6 py-4">
-                  tidak ada
-                </td>
-                <td class="px-6 py-4">
-                  2
-                </td>
-                <td class="px-6 py-4">
-                  2023-04-10
-                </td>
-                <td class="px-6 py-4">
-                  baik
-                </td>
-              </tr>
+              @foreach ($barang as $b)
+                <tr class="border-b {{ $loop->iteration % 2 == 1 ? 'bg-gray-200' : 'bg-white'}}">
+                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{ $loop->iteration }}
+                  </th>
+                  <td class="px-6 py-4 font-bold text-green-600">
+                    {{ $b->id }}
+                  </td>
+                  <td class="px-6 py-4">
+                    {{ $b->jenis_barang }}
+                  </td>
+                  <td class="px-6 py-4">
+                    {{ $b->kategori }}
+                  </td>
+                  <td class="px-6 py-4">
+                    {{ $b->merek }}
+                  </td>
+                  <td class="px-6 py-4">
+                    {{ $b->jumlah_barang }}
+                  </td>
+                  <td class="px-6 py-4">
+                    {{ $b->tanggal_masuk }}
+                  </td>
+                  <td class="px-6 py-4">
+                    {{ $b->kondisi_barang }}
+                  </td>
+                </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
-
+        <div class="my-2">
+            {{ $barang->links() }}
+        </div>
       </div>
     </div>
   </div>
