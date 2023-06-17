@@ -34,9 +34,6 @@
               tgl masuk
             </th>
             <th scope="col" class="px-6 py-3 border-r border-black">
-              tgl keluar
-            </th>
-            <th scope="col" class="px-6 py-3 border-r border-black">
               kondisi
             </th>
           </tr>
@@ -61,9 +58,6 @@
               </td>
               <td class="px-6 py-4 border-r border-black">
                 {{ $b->tanggal_masuk }}
-              </td>
-              <td class="px-6 py-4 border-r border-black">
-                {{ $b->tanggal_keluar ?? '-' }}
               </td>
               <td class="px-6 py-4 border-r border-black capitalize">
                 {{ $b->kondisi_barang }}

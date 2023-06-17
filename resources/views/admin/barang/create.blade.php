@@ -41,10 +41,6 @@
                         <input type="date" name="tanggal_masuk" class="h-16 border w-52">
                     </div>
                     <div class="flex gap-10 items-center justify-end">
-                        <label for="tanggal_keluar" class="text-xl">Tanggal Keluar</label>
-                        <input type="date" name="tanggal_keluar" class="h-16 border w-52">
-                    </div>
-                    <div class="flex gap-10 items-center justify-end">
                         <label for="kondisi" class="text-xl">Kondisi</label>
                         <input type="text" name="kondisi_barang" class="h-16 border w-52">
                     </div>

@@ -20,7 +20,6 @@ class BarangSeeder extends Seeder
                 "merek" => "tidak ada",
                 "jumlah_barang" => 4,
                 "tanggal_masuk" => "2022-10-03",
-                "tanggal_keluar" => "2022-10-03",
                 "kondisi_barang" => "baik"
             ],
             [
@@ -30,7 +29,6 @@ class BarangSeeder extends Seeder
                 "merek" => "tidak ada",
                 "jumlah_barang" => 6,
                 "tanggal_masuk" => "2022-10-03",
-                "tanggal_keluar" => "2022-10-03",
                 "kondisi_barang" => "baik"
             ],
             [
@@ -40,7 +38,6 @@ class BarangSeeder extends Seeder
                 "merek" => "brother",
                 "jumlah_barang" => 1,
                 "tanggal_masuk" => "2022-10-03",
-                "tanggal_keluar" => "2022-10-03",
                 "kondisi_barang" => "baik"
             ],
             [
@@ -50,7 +47,6 @@ class BarangSeeder extends Seeder
                 "merek" => "tidak ada",
                 "jumlah_barang" => 1,
                 "tanggal_masuk" => "2022-10-04",
-                "tanggal_keluar" => "2022-10-04",
                 "kondisi_barang" => "baik"
             ],
             [
@@ -60,7 +56,6 @@ class BarangSeeder extends Seeder
                 "merek" => "tidak ada",
                 "jumlah_barang" => 1,
                 "tanggal_masuk" => "2022-10-03",
-                "tanggal_keluar" => "2022-10-03",
                 "kondisi_barang" => "baik"
             ],
             [
@@ -70,7 +65,6 @@ class BarangSeeder extends Seeder
                 "merek" => "LG",
                 "jumlah_barang" => 1,
                 "tanggal_masuk" => "2022-10-04",
-                "tanggal_keluar" => "2022-10-04",
                 "kondisi_barang" => "baik"
             ],
             [
@@ -80,7 +74,6 @@ class BarangSeeder extends Seeder
                 "merek" => "Daikin",
                 "jumlah_barang" => 1,
                 "tanggal_masuk" => "2022-10-04",
-                "tanggal_keluar" => "2022-10-04",
                 "kondisi_barang" => "baik"
             ],
             [
@@ -90,7 +83,6 @@ class BarangSeeder extends Seeder
                 "merek" => "tidak ada",
                 "jumlah_barang" => 3,
                 "tanggal_masuk" => "2022-10-11",
-                "tanggal_keluar" => "2022-10-11",
                 "kondisi_barang" => "baik"
             ],
             [
@@ -100,7 +92,6 @@ class BarangSeeder extends Seeder
                 "merek" => "sharp",
                 "jumlah_barang" => 1,
                 "tanggal_masuk" => "2022-10-04",
-                "tanggal_keluar" => "2022-10-04",
                 "kondisi_barang" => "baik"
             ],
             [
@@ -110,7 +101,6 @@ class BarangSeeder extends Seeder
                 "merek" => "tidak ada",
                 "jumlah_barang" => 2,
                 "tanggal_masuk" => "2022-01-11",
-                "tanggal_keluar" => "2022-01-11",
                 "kondisi_barang" => "baik"
             ],
         ];

@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('merek');
             $table->integer('jumlah_barang');
             $table->date('tanggal_masuk');
-            $table->date('tanggal_keluar');
             $table->string('kondisi_barang');
             $table->timestamps();
         });
