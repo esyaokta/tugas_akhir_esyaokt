@@ -48,4 +48,39 @@ class BarangController extends Controller
         return redirect()->route('admin.barang.index')->with('success', 'Barang berhasil ditambahkan');
     }
 
+    public function update(Request $request, String $id)
+    {
+        $validated = $request->validate([
+            'jenis_barang' => 'required',
+            'kategori' => 'required',
+            'merek' => 'required',
+            'jumlah_barang' => 'required',
+            'tanggal_masuk' => 'required',
+            'kondisi_barang' => 'required',
+        ]);
+
+
+        $barang = Barang::find($id);
+
+        $barang->update([
+            'jenis_barang' => $request->jenis_barang,
+            'kategori' => $request->kategori,
+            'merek' => $request->merek,
+            'jumlah_barang' => $request->jumlah_barang,
+            'tanggal_masuk' => $request->tanggal_masuk,
+            'kondisi_barang' => $request->kondisi_barang,
+        ]);
+
+        return redirect()->route('admin.barang.index')->with('success', 'Barang berhasil diupdate');
+    }
+
+    public function destroy(String $id)
+    {
+        $barang = Barang::find($id);
+
+        $barang->delete();
+
+        return redirect()->route('admin.barang.index')->with('success', 'Barang berhasil dihapus');
+    }
+
 }

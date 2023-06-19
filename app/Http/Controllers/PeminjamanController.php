@@ -55,4 +55,11 @@ class PeminjamanController extends Controller
         return redirect()->route('admin.peminjaman.index')->with('success', 'Peminjaman berhasil diperbarui');
 
     }
+
+    public function destroy(String $id)
+    {
+        Peminjaman::findOrFail($id)->delete();
+
+        return redirect()->route('admin.peminjaman.index')->with('success', 'Peminjaman berhasil dihapus');
+    }
 }

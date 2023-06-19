@@ -105,10 +105,16 @@
             <td class="px-6 py-4 border-r border-black">
               {{ $p->alasan }}
             </td>
-            <td class="px-6 py-4">
+            <td class="px-6 py-4 flex justify-center gap-3">
               <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" type="button">
                 <i class="fa-regular fa-pen-to-square"></i>
               </button>
+              <form action="{{ route('admin.peminjaman.destroy', ['id' => $p->id]) }}" method="post">
+                @method('DELETE')
+                @csrf
+                <button class="fa-regular fa-trash-can">
+                </button>
+              </form>
             </td>
           </tr>
           <div id="defaultModal" tabindex="-1" aria-hidden="true"

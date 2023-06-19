@@ -49,11 +49,14 @@ Route::middleware(['auth', 'admin'])->group(function () {
             Route::get('/', [BarangController::class, 'adminIndex'])->name('admin.barang.index');
             Route::get('/create', [BarangController::class, 'create'])->name('admin.barang.create');
             Route::post('/', [BarangController::class, 'store'])->name('admin.barang.store');
+            Route::put('/{id}/update', [BarangController::class, 'update'])->name('admin.barang.update');
+            Route::delete('/{id}/delete', [BarangController::class, 'destroy'])->name('admin.barang.destroy');
         });
 
         Route::prefix('/peminjaman')->group(function () {
             Route::get('/', [PeminjamanController::class, 'adminIndex'])->name('admin.peminjaman.index');
             Route::post('/{id}/update', [PeminjamanController::class, 'update'])->name('admin.peminjaman.update');
+            Route::delete('/{id}/delete', [PeminjamanController::class, 'destroy'])->name('admin.peminjaman.destroy');
 
         });
     });
