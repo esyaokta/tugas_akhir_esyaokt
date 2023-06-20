@@ -11,4 +11,8 @@
     <div class="h-20 border-b border-black flex justify-center items-center px-16">
         <a href="{{ route('admin.barang.index') }}" class="font-semibold text-2xl">Barang</a>
     </div>
+    <div class="h-20 border-b border-black flex justify-center items-center px-16">
+        <a href="{{ route('admin.user.index') }}" class="font-semibold text-2xl">Pengguna</a>
+    </div>
+
 </aside>

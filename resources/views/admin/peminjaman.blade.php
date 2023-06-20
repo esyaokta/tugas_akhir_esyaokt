@@ -106,7 +106,7 @@
               {{ $p->alasan }}
             </td>
             <td class="px-6 py-4 flex justify-center gap-3">
-              <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" type="button">
+              <button data-modal-target="{{ "defaultModal-".$p->id }}" data-modal-toggle="{{ "defaultModal-".$p->id }}" type="button">
                 <i class="fa-regular fa-pen-to-square"></i>
               </button>
               <form action="{{ route('admin.peminjaman.destroy', ['id' => $p->id]) }}" method="post">
@@ -117,7 +117,7 @@
               </form>
             </td>
           </tr>
-          <div id="defaultModal" tabindex="-1" aria-hidden="true"
+          <div id="{{ "defaultModal-".$p->id }}" tabindex="-1" aria-hidden="true"
             class="fixed top-0 left-0 right-0 z-50 w-full hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-2xl max-h-full">
               <!-- Modal content -->
@@ -131,7 +131,7 @@
                     </h3>
                     <button type="button"
                       class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                      data-modal-hide="defaultModal">
+                      data-modal-hide="{{ "defaultModal-".$p->id }}">
                       <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
@@ -159,7 +159,7 @@
                   </div>
                   <!-- Modal footer -->
                   <div class="flex items-center p-6 gap-4 border-t rounded-b">
-                    <button data-modal-hide="defaultModal" type="submit"
+                    <button data-modal-hide="{{ "defaultModal-".$p->id }}" type="submit"
                       class="text-white bg-black hover:bg-white  font-medium rounded-lg text-sm px-5 py-2.5 text-center border border-black hover:text-black transition-all duration-150">Submit</button>
                   </div>
                 </div>

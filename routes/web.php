@@ -5,6 +5,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,7 +58,14 @@ Route::middleware(['auth', 'admin'])->group(function () {
             Route::get('/', [PeminjamanController::class, 'adminIndex'])->name('admin.peminjaman.index');
             Route::post('/{id}/update', [PeminjamanController::class, 'update'])->name('admin.peminjaman.update');
             Route::delete('/{id}/delete', [PeminjamanController::class, 'destroy'])->name('admin.peminjaman.destroy');
+        });
 
+        Route::prefix('/user')->group(function () {
+           Route::get('/', [UserController::class, 'index'])->name('admin.user.index');
+           Route::get('/create', [UserController::class, 'create'])->name('admin.user.create');
+           Route::post('/', [UserController::class, 'store'])->name('admin.user.store');
+           Route::put('/{id}/update', [UserController::class, 'update'])->name('admin.user.update');
+           Route::delete('/{id}/delete', [UserController::class, 'destroy'])->name('admin.user.destroy');
         });
     });
 });

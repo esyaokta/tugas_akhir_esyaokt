@@ -1,20 +1,20 @@
 <x-admin.app>
   <x-slot name="header">
     <h2 class="font-semibold text-3xl text-gray-800 leading-tight">
-      {{ __('Barang') }}
+      {{ __('Pengguna') }}
     </h2>
   </x-slot>
 
   <div class="flex flex-col justify-center gap-10">
 
     <div class="flex justify-between">
-      <h2 class="text-2xl font-semibold">Data Barang</h2>
+      <h2 class="text-2xl font-semibold">Data user</h2>
       <div class="flex h-10">
-        <a href="{{ route('admin.barang.create') }}"
+        <a href="{{ route('admin.user.create') }}"
           class="bg-gray-300 hover:bg-gray-400 transition-all duration-200 flex items-center gap-3 px-4 h-full">
           <i class="fa-solid fa-plus px-2"></i>
           <span class="border-r border-black h-full"></span>
-          Tambah Barang
+          Tambah User
         </a>
       </div>
     </div>
@@ -54,22 +54,22 @@
               id
             </th>
             <th scope="col" class="px-6 py-3 border-r border-black">
-              jenis
+              nama
             </th>
             <th scope="col" class="px-6 py-3 border-r border-black">
-              kategori
+              username
             </th>
             <th scope="col" class="px-6 py-3 border-r border-black">
-              merek
+              nim
             </th>
             <th scope="col" class="px-6 py-3 border-r border-black">
-              jumlah
+              no hp
             </th>
             <th scope="col" class="px-6 py-3 border-r border-black">
-              tgl masuk
+              email
             </th>
             <th scope="col" class="px-6 py-3 border-r border-black">
-              kondisi
+              role
             </th>
             <th scope="col" class="px-6 py-3">
               aksi
@@ -77,50 +77,54 @@
           </tr>
         </thead>
         <tbody>
-          @foreach ($barang as $b)
+          @foreach ($users as $u)
             <tr class="bg-[#FFFCFC] dark:bg-gray-800 dark:border-gray-700 border-b border-black">
               <th scope="row" class="px-6 py-4 border-r border-black ">
                 {{ $loop->iteration }}
               </th>
               <td class="px-6 py-4 border-r border-black capitalize">
-                {{ $b->jenis_barang }}
+                {{ $u->nama }}
               </td>
               <td class="px-6 py-4 border-r border-black capitalize">
-                {{ $b->kategori }}
+                {{ $u->username }}
               </td>
               <td class="px-6 py-4 border-r border-black">
-                {{ $b->merek }}
+                {{ $u->nim }}
               </td>
               <td class="px-6 py-4 border-r border-black">
-                {{ $b->jumlah_barang }}
+                {{ $u->no_hp }}
               </td>
               <td class="px-6 py-4 border-r border-black">
-                {{ $b->tanggal_masuk }}
+                {{ $u->email }}
               </td>
               <td class="px-6 py-4 border-r border-black capitalize">
-                {{ $b->kondisi_barang }}
+                @if ($u->cekkode == '0')
+                  Admin
+                @else
+                  User
+                @endif
               </td>
               <td class="px-6 py-4 flex justify-center gap-3">
-                <button data-modal-target="{{ "edit-modal-".$b->id }}" data-modal-toggle="{{ "edit-modal-".$b->id }}"
+                <button data-modal-target="{{ "edit-modal-".$u->id }}" data-modal-toggle="{{ "edit-modal-".$u->id }}"
                   class="fa-regular fa-pen-to-square" type="button">
                 </button>
-                <form action="{{ route('admin.barang.destroy', ['id' => $b->id]) }}" method="post">
-                    @method('DELETE')
-                    @csrf
-                    <button class="fa-regular fa-trash-can">
-                    </button>
+                <form action="{{ route('admin.user.destroy', ['id' => $u->id]) }}" method="post">
+                  @method('DELETE')
+                  @csrf
+                  <button class="fa-regular fa-trash-can">
+                  </button>
                 </form>
               </td>
             </tr>
             <!-- Main modal -->
-            <div id="{{ "edit-modal-".$b->id }}" tabindex="-1" aria-hidden="true"
+            <div id="{{ "edit-modal-".$u->id }}" tabindex="-1" aria-hidden="true"
               class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
               <div class="relative w-full max-w-md max-h-full">
                 <!-- Modal content -->
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                   <button type="button"
                     class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                    data-modal-hide="{{ "edit-modal-".$b->id }}">
+                    data-modal-hide="{{ "edit-modal-".$u->id }}">
                     <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg">
                       <path fill-rule="evenodd"
@@ -130,60 +134,56 @@
                     <span class="sr-only">Close modal</span>
                   </button>
                   <div class="px-6 py-6 lg:px-8">
-                    <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Edit data barang</h3>
-                    <form class="space-y-6" action="{{ route('admin.barang.update', ['id' => $b->id]) }}" method="post">
-                        @csrf
-                        @method('PUT')
+                    <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Edit data user</h3>
+                    <form class="space-y-6" action="{{ route('admin.user.update', ['id' => $u->id]) }}" method="post">
+                      @csrf
+                      @method('PUT')
                       <div class="my-3">
-                        <label for="jenis_barang"
-                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis barang</label>
-                        <input type="text" name="jenis_barang" id="jenis_barang"
-                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                          value="{{ $b->jenis_barang }}" required>
+                        <label for="nama"
+                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
+                        <input type="text" id="nama" name="nama" value="{{ $u->nama }}"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-black dark:focus:border-black">
                       </div>
                       <div class="my-3">
-                        <label for="kategori"
-                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori barang</label>
-                        <select id="kategori" name="kategori"
-                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                          @if ($b->kategori == 'perabotan kantor')
-                            <option selected value="perabotan kantor">Perabotan Kantor</option>
-                            <option value="perabotan elektronik">Perabotan Elektronik</option>
-                          @elseif ($b->kategori == 'perabotan elektronik')
-                            <option value="perabotan kantor">Perabotan Kantor</option>
-                            <option selected value="perabotan elektronik">Perabotan Elektronik</option>
+                        <label for="username"
+                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
+                        <input type="text" id="username" name="username" value="{{ $u->username }}"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-black dark:focus:border-black">
+                      </div>
+                      <div class="my-3">
+                        <label for="nim"
+                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIM</label>
+                        <input type="number" id="nim" name="nim" value="{{ $u->nim }}"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-black dark:focus:border-black">
+                      </div>
+                      <div class="my-3">
+                        <label for="no_hp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No
+                          HP</label>
+                        <input type="text" id="no_hp" name="no_hp" value="{{ $u->no_hp }}"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-black dark:focus:border-black">
+                      </div>
+                      <div class="my-3">
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No
+                          HP</label>
+                        <input type="email" id="email" name="email" value="{{ $u->email }}"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-black dark:focus:border-black">
+                      </div>
+                      <div class="my-3">
+                        <label for="cekkode"
+                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
+                        <select id="cekkode" name="cekkode"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-black dark:focus:border-black">
+                          @if ($u->cekkode == '0')
+                            <option value="0" selected>Admin</option>
+                            <option value="1">User</option>
+                          @else
+                            <option value="0">Admin</option>
+                            <option value="1" selected>User</option>
                           @endif
                         </select>
                       </div>
-                      <div class="my-3">
-                        <label for="merek"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Merek</label>
-                      <input type="merek" name="merek" id="merek"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                        value="{{ $b->merek }}" required>
-                      </div>
-                      <div class="my-3">
-                        <label for="jumlah_barang"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jumlah Barang</label>
-                      <input type="number" name="jumlah_barang" id="jumlah_barang"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                        value="{{ $b->jumlah_barang }}" required>
-                      </div>
-                      <div class="my-3">
-                        <label for="tanggal_masuk"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Masuk</label>
-                      <input type="date" name="tanggal_masuk" id="tanggal_masuk"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                        value="{{ $b->tanggal_masuk }}" required>
-                      </div>
-                      <div class="my-3">
-                        <label for="kondisi_barang"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kondisi Barang</label>
-                      <input type="text" name="kondisi_barang" id="kondisi_barang"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                        value="{{ $b->kondisi_barang }}" required>
-                      </div>
-                      <button type="submit" class="py-2 px-4 my-2 rounded-lg bg-black hover:bg-white text-white hover:text-black transition-all duration-200 hover:border border-black font-semibold">
+                      <button type="submit"
+                        class="py-2 px-4 my-2 rounded-lg bg-black hover:bg-white text-white hover:text-black transition-all duration-200 hover:border border-black font-semibold">
                         Submit
                       </button>
 
@@ -196,7 +196,7 @@
         </tbody>
       </table>
       <div class="my-4">
-        {{ $barang->links() }}
+        {{ $users->links() }}
       </div>
     </div>
   </div>
