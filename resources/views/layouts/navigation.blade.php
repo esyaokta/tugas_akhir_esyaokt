@@ -29,12 +29,12 @@
         @if (request()->routeIs('barang.index')) class="text-center font-semibold uppercase text-2xl px-4 py-2 border-b-4 border-black" @endif
         class="text-center font-semibold uppercase text-2xl px-4 py-2">
           <a href="{{ route('barang.index') }}">
-            INVETORY
+            INVENTORY
           </a>
         </div>
         <div class="text-center font-semibold uppercase text-2xl px-4 py-2">
           <a href="{{ route('dashboard') }}">
-            KONTAK
+            PEMBERITAHUAN
           </a>
         </div>
         <div class="text-center font-semibold uppercase text-2xl px-4 py-2">
