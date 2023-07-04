@@ -18,9 +18,9 @@ use App\Http\Controllers\UserController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return redirect(route('login'));
+});
 
 Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/dashboard', function () {
@@ -44,6 +44,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
         Route::prefix('/laporan')->group(function () {
             Route::get('/', [LaporanController::class, 'index'])->name('admin.laporan.index');
+            Route::get('/cetak', [LaporanController::class, 'cetak'])->name('admin.laporan.cetak');
         });
 
         Route::prefix('/barang')->group(function () {

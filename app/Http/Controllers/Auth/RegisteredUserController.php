@@ -33,10 +33,10 @@ class RegisteredUserController extends Controller
 
         $request->validate([
             'nama' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:255', 'unique:'.User::class],
-            'nim' => ['required', 'max:255', 'unique:'.User::class],
+            'username' => ['required', 'string', 'max:255', 'unique:' . User::class],
+            'nim' => ['required', 'max:255', 'unique:' . User::class],
             'no_hp' => ['required'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'password_confirmation' => ['required', 'same:password'],
         ]);
@@ -53,8 +53,6 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        Auth::login($user);
-
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('login');
     }
 }

@@ -1,45 +1,61 @@
-<x-admin.app>
-  <x-slot name="header">
-    <div class="w-full flex justify-between items-center">
-      <h2 class="font-semibold text-3xl text-gray-800 leading-tight">
-        {{ __('Laporan Bulan Ini') }}
-      </h2>
-      <a href="{{ route('admin.laporan.cetak') }}"
-        class="py-2 px-8 border border-black uppercase font-semibold bg-black text-white hover:bg-white hover:text-black transition-all duration-200">Cetak</a>
-    </div>
-  </x-slot>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Laporan Bulan Ini</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td,
+    th {
+      border: 1px solid #999;
+      padding: 0.5rem;
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
   <div class="flex flex-col justify-center gap-10">
+    <div class="flex justify-center items-center w-full" style="text-align: center">
+      LAPORAN BULAN INI
+    </div>
 
     <!-- Laporan Barang -->
     <div class="flex justify-start">
-      <h2 class="text-2xl font-semibold">Data Barang</h2>
+      <h4 class="text-2xl font-semibold">Data Barang</h4>
     </div>
     <div class="relative overflow-x-auto">
-      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border border-black">
-        <thead
-          class="text-base text-gray-700 uppercase bg-[#FFFCFC] dark:bg-gray-700 dark:text-gray-400 border-b border-black">
+      <table>
+        <thead>
           <tr>
             <th scope="col" class="px-6 py-3 border-r border-black">
-              id
+              ID
             </th>
             <th scope="col" class="px-6 py-3 border-r border-black">
-              jenis
+              JENIS
             </th>
             <th scope="col" class="px-6 py-3 border-r border-black">
-              kategori
+              KATEGORI
             </th>
             <th scope="col" class="px-6 py-3 border-r border-black">
-              merek
+              MEREK
             </th>
             <th scope="col" class="px-6 py-3 border-r border-black">
-              jumlah
+              JUMLAH
             </th>
             <th scope="col" class="px-6 py-3 border-r border-black">
-              tgl masuk
+              TGL MASUK
             </th>
             <th scope="col" class="px-6 py-3 border-r border-black">
-              kondisi
+              KONDISI
             </th>
           </tr>
         </thead>
@@ -72,40 +88,39 @@
         </tbody>
       </table>
     </div>
-    {{ $barang->links() }}
 
     <!-- Laporan Peminjaman -->
     <div class="flex justify-start">
-      <h2 class="text-2xl font-semibold">Data Peminjaman</h2>
+      <h4 class="text-2xl font-semibold">Data Peminjaman</h4>
     </div>
-    <div class="relative overflow-x-auto">
-      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border border-black">
+    <div class="relative overflow-x-auto" style="display: flex; justify-content:center; align-items:center; width:100%">
+      <table style="width: 100%;">
         <thead
           class="text-base text-gray-700 uppercase bg-[#FFFCFC] dark:bg-gray-700 dark:text-gray-400 border-b border-black">
           <tr>
-            <th scope="col" class="px-6 py-3 border-r border-black">
-              id
+            <th scope="col">
+              ID
             </th>
-            <th scope="col" class="px-6 py-3 border-r border-black">
-              nama kegiatan
+            <th scope="col">
+              NAMA KEGIATAN
             </th>
-            <th scope="col" class="px-6 py-3 border-r border-black">
-              tanggal pinjam
+            <th scope="col">
+              TANGGAL PINJAM
             </th>
-            <th scope="col" class="px-6 py-3 border-r border-black">
-              jam pinjam
+            <th scope="col">
+              JAM PINJAM
             </th>
-            <th scope="col" class="px-6 py-3 border-r border-black">
-              jam selesai
+            <th scope="col">
+              JAM SELESAI
             </th>
-            <th scope="col" class="px-6 py-3 border-r border-black">
-              persetujuan
+            <th scope="col">
+              PERSETUJUAN
             </th>
-            <th scope="col" class="px-6 py-3 border-r border-black">
-              alasan
+            <th scope="col">
+              ALASAN
             </th>
-            <th scope="col" class="px-6 py-3 border-r border-black">
-              nama peminjam
+            <th scope="col">
+              NAMA PEMINJAM
             </th>
           </tr>
         </thead>
@@ -141,6 +156,7 @@
         </tbody>
       </table>
     </div>
-    {{ $peminjaman->links() }}
   </div>
-</x-admin.app>
+</body>
+
+</html>
