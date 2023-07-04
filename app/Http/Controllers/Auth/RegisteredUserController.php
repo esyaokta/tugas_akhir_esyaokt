@@ -41,7 +41,7 @@ class RegisteredUserController extends Controller
             'password_confirmation' => ['required', 'same:password'],
         ]);
 
-        $user = User::create([
+        User::create([
             'nama' => $request->nama,
             'username' => $request->username,
             'no_hp' => $request->no_hp,
@@ -49,9 +49,6 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-
-
-        event(new Registered($user));
 
         return redirect()->route('login');
     }
