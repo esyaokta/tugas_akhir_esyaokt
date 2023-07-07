@@ -25,7 +25,7 @@
 <body>
   <div class="flex flex-col justify-center gap-10">
     <div class="flex justify-center items-center w-full" style="text-align: center">
-      LAPORAN BULAN INI
+      LAPORAN BULANAN
     </div>
 
     <!-- Laporan Barang -->

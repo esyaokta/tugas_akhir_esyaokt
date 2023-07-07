@@ -44,7 +44,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
         Route::prefix('/laporan')->group(function () {
             Route::get('/', [LaporanController::class, 'index'])->name('admin.laporan.index');
-            Route::get('/cetak', [LaporanController::class, 'cetak'])->name('admin.laporan.cetak');
+            Route::get('/search', [LaporanController::class, 'search'])->name('admin.laporan.search');
+            Route::get('/cetak/{periode}', [LaporanController::class, 'cetak'])->name('admin.laporan.cetak');
         });
 
         Route::prefix('/barang')->group(function () {
