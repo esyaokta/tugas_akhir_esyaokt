@@ -5,6 +5,7 @@
     </h2>
   </x-slot>
 
+
   <div class="relative overflow-x-auto">
     <!-- Success Message -->
     @if (session('success'))

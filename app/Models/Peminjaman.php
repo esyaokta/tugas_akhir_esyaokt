@@ -35,4 +35,9 @@ class Peminjaman extends Model
     {
         return $this->belongsTo(Barang::class);
     }
+    
+    public function getNotifikasi($persetujuan)
+    {
+        return self::where('persetujuan', $persetujuan)->get();
+    }
 }

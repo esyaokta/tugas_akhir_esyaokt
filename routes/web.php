@@ -6,6 +6,7 @@ use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,12 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::prefix('/peminjaman')->group(function () {
         Route::get('/', [PeminjamanController::class, 'index'])->name('peminjaman.index');
         Route::post('/', [PeminjamanController::class, 'store'])->name('peminjaman.store');
+    });
+
+    Route::prefix('/pemberitahuan')->group(function () {
+        Route::post('/submit-form', [NotificationController::class, 'submitForm'])->name('form.submit');
+        Route::get('/', [NotificationController::class, 'showPemberitahuan'])->name('halaman.pemberitahuan');
+
     });
 
     Route::prefix('/barang')->group(function () {

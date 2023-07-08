@@ -1,6 +1,6 @@
 <x-app-layout>
 
-  <div class="max-w-7xl mx-auto px-12">
+  <div class="max-w-7xl mx-auto ">
     <div class="flex justify-between">
       <div id="default-carousel" class="relative w-1/2" data-carousel="slide">
         <!-- Carousel wrapper -->
@@ -51,6 +51,8 @@
         </button>
       </div>
       <div class="mx-auto bg-white flex flex-col justify-center gap-8">
+
+  
 
         <!-- Success Message -->
         @if (session('success'))

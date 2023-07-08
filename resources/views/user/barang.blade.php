@@ -17,9 +17,9 @@
                 <th scope="col" class="px-6 py-3">
                   No
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <!-- <th scope="col" class="px-6 py-3">
                   Id Barang
-                </th>
+                </th> -->
                 <th scope="col" class="px-6 py-3">
                   Jenis Barang
                 </th>
@@ -32,9 +32,9 @@
                 <th scope="col" class="px-6 py-3">
                   Jumlah Barang
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <!-- <th scope="col" class="px-6 py-3">
                   Tanggal Masuk
-                </th>
+                </th> -->
                 <th scope="col" class="px-6 py-3">
                   Kondisi Barang
                 </th>
@@ -46,9 +46,9 @@
                   <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{ $loop->iteration }}
                   </th>
-                  <td class="px-6 py-4 font-bold text-green-600">
+                  <!-- <td class="px-6 py-4 font-bold text-green-600">
                     {{ $b->id }}
-                  </td>
+                  </td> -->
                   <td class="px-6 py-4">
                     {{ $b->jenis_barang }}
                   </td>
@@ -61,9 +61,9 @@
                   <td class="px-6 py-4">
                     {{ $b->jumlah_barang }}
                   </td>
-                  <td class="px-6 py-4">
+                  <!-- <td class="px-6 py-4">
                     {{ $b->tanggal_masuk }}
-                  </td>
+                  </td> -->
                   <td class="px-6 py-4">
                     {{ $b->kondisi_barang }}
                   </td>

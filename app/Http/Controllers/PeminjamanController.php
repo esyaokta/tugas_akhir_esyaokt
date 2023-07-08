@@ -6,6 +6,7 @@ use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+
 class PeminjamanController extends Controller
 {
     public function index(){
@@ -62,4 +63,5 @@ class PeminjamanController extends Controller
 
         return redirect()->route('admin.peminjaman.index')->with('success', 'Peminjaman berhasil dihapus');
     }
+    
 }
