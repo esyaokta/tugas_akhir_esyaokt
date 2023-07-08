@@ -49,6 +49,7 @@ class LaporanController extends Controller
         $peminjaman = Peminjaman::whereMonth('tanggal_pinjam', $month)->whereYear('tanggal_pinjam', $year)->orderBy('created_at', 'desc')->paginate(10);
 
         return view('admin.laporan-bulanan', compact('barang', 'peminjaman', 'periode'));
+        
     }
 
     /**
