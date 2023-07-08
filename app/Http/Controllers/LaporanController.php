@@ -6,6 +6,8 @@ use App\Models\Barang;
 use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+use PDF;
 
 class LaporanController extends Controller
 {
@@ -14,9 +16,10 @@ class LaporanController extends Controller
      */
     public function index()
     {
-        $barang = Barang::orderBy('created_at', 'desc')->paginate(10);
+        $barang = Barang::whereMonth('created_at', date('m'))->orderBy('created_at', 'desc')->paginate(10);
+        $peminjaman = Peminjaman::whereMonth('created_at', date('m'))->orderBy('created_at', 'desc')->paginate(10);
 
-        return view('admin.laporan', compact('barang'));
+        return view('admin.laporan', compact('barang', 'peminjaman'));
     }
 
     public function dashboard()
@@ -25,6 +28,28 @@ class LaporanController extends Controller
         $jumlah_peminjaman = Peminjaman::count();
 
         return view('admin.dashboard', compact('jumlah_barang', 'jumlah_peminjaman'));
+    }
+
+    public function cetak()
+    {
+        $barang = Barang::get();
+        $peminjaman = Peminjaman::get();
+
+        $pdf = PDF::loadview('admin.laporan_pdf', compact('barang', 'peminjaman'));
+        return $pdf->stream();
+    }
+
+    public function search(Request $request)
+    {
+        $periode = $request->periode;
+        $month = Carbon::parse($periode)->format('m');
+        $year = Carbon::parse($periode)->format('Y');
+
+        $barang = Barang::whereMonth('tanggal_masuk', $month)->whereYear('tanggal_masuk', $year)->orderBy('created_at', 'desc')->paginate(10);
+        $peminjaman = Peminjaman::whereMonth('tanggal_pinjam', $month)->whereYear('tanggal_pinjam', $year)->orderBy('created_at', 'desc')->paginate(10);
+
+        return view('admin.laporan-bulanan', compact('barang', 'peminjaman', 'periode'));
+        
     }
 
     /**
@@ -73,5 +98,5 @@ class LaporanController extends Controller
     public function destroy(string $id)
     {
         //
-    }
+   }
 }

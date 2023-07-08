@@ -19,9 +19,9 @@ use App\Http\Controllers\NotificationController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return redirect(route('login'));
+});
 
 Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/dashboard', function () {
@@ -51,6 +51,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
         Route::prefix('/laporan')->group(function () {
             Route::get('/', [LaporanController::class, 'index'])->name('admin.laporan.index');
+            Route::get('/search', [LaporanController::class, 'search'])->name('admin.laporan.search');
+            Route::get('/cetak/{periode}', [LaporanController::class, 'cetak'])->name('admin.laporan.cetak');
         });
 
         Route::prefix('/barang')->group(function () {

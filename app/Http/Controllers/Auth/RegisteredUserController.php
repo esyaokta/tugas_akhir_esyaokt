@@ -33,15 +33,15 @@ class RegisteredUserController extends Controller
 
         $request->validate([
             'nama' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:255', 'unique:'.User::class],
-            'nim' => ['required', 'max:255', 'unique:'.User::class],
-            'no_hp' => ['required'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'username' => ['required', 'string', 'max:255', 'unique:' . User::class],
+            'nim' => ['required', 'max:255', 'unique:' . User::class, 'numeric'],
+            'no_hp' => ['required', 'numeric'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'password_confirmation' => ['required', 'same:password'],
         ]);
 
-        $user = User::create([
+        User::create([
             'nama' => $request->nama,
             'username' => $request->username,
             'no_hp' => $request->no_hp,
@@ -50,11 +50,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        return redirect()->route('login');
 
-        event(new Registered($user));
-
-        
-
-        return redirect()->Route('login');
     }
 }
