@@ -4,10 +4,10 @@
     $num=1;
     @endphp
 
-    <div class="container p-4">
+    <div class="max-w-7xl flex flex-col items-center mx-auto p-6 gap-4">
         @foreach ($notifikasi->reverse() as $item)
         @if ($item->persetujuan == 'Disetujui')
-            <div class="alert alert-success">
+            <div class="w-full bg-green-300 p-4 rounded-md">
                 <ul>
                 {{ $num++ }}. <b>PEMINJAMAN RUANGAN</b>
                     <br>&nbsp;&nbsp;&nbsp;&nbsp;Kegiatan : {{ $item->nama_kegiatan }}
@@ -17,7 +17,7 @@
                 </ul>
             </div>
         @elseif ($item->persetujuan == 'Ditolak')
-            <div class="alert alert-danger">
+            <div class="w-full bg-red-200 p-4 rounded-md">
                 <ul>
                     {{ $num++ }}. <b>PEMINJAMAN RUANGAN</b>
                         <br>&nbsp;&nbsp;&nbsp;&nbsp; Kegiatan : {{ $item->nama_kegiatan }}
@@ -28,7 +28,7 @@
                     </ul>
             </div>
         @elseif ($item->persetujuan == 'Menunggu')
-            <div class="alert alert-warning">
+            <div class="w-full bg-yellow-100 p-4 rounded-md">
             <ul>
                 {{ $num++ }}. <b>PEMINJAMAN RUANGAN</b>
                     <br>&nbsp;&nbsp;&nbsp;&nbsp;Kegiatan : {{ $item->nama_kegiatan }}
