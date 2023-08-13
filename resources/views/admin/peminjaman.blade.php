@@ -33,6 +33,7 @@
         </button>
       </div>
     @endif
+
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border border-black">
       <thead
         class="text-base text-gray-700 uppercase bg-[#FFFCFC] dark:bg-gray-700 dark:text-gray-400 border-b border-black">

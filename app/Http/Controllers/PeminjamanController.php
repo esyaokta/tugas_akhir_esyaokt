@@ -22,6 +22,21 @@ class PeminjamanController extends Controller
             'jam_selesai' => 'required',
         ]);
 
+        // date now
+        $now = date('Y-m-d H:i:s');
+
+        if($request->tanggal_pinjam < $now){
+            return redirect()->back()->withErrors('Tanggal peminjaman tidak valid');
+        }
+
+        // jam kerja
+        $jam_mulai_kerja = '08:00:00';
+        $jam_selesai_kerja = '16:00:00';
+
+        if($request->jam_pinjam > $request->jam_selesai || $request->jam_pinjam < $jam_mulai_kerja || $request->jam_selesai > $jam_selesai_kerja || $request->jam_pinjam > $jam_selesai_kerja || $request->jam_selesai < $jam_mulai_kerja){
+            return redirect()->back()->withErrors('Jam peminjaman harus diantara jam kerja');
+        }
+
         $user = auth()->user();
 
         Peminjaman::create([
@@ -63,5 +78,5 @@ class PeminjamanController extends Controller
 
         return redirect()->route('admin.peminjaman.index')->with('success', 'Peminjaman berhasil dihapus');
     }
-    
+
 }
