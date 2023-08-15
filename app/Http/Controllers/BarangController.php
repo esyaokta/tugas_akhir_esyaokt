@@ -83,4 +83,12 @@ class BarangController extends Controller
         return redirect()->route('admin.barang.index')->with('success', 'Barang berhasil dihapus');
     }
 
+    public function search(Request $request)
+    {
+        $cari = $request->carifwb;
+        $barang = Barang::where('jenis_barang', 'like', '%'.$cari.'%')->paginate(10);
+        
+        return view('user.barang', compact('barang'));
+    }
+
 }

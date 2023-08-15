@@ -1,10 +1,13 @@
 <x-admin.app>
   <x-slot name="header">
-    <h2 class="font-semibold text-3xl text-gray-800 leading-tight">
+    <h2 class="font-semibold text-3xl text-gray-800 leading-tight flex items-center justify-center mb-0">
       {{ __('Approval Peminjaman') }}
     </h2>
   </x-slot>
-
+  <form class="flex" action="">
+    <input class="w-80 h-10 rounded-lg mb-4" type="text" placeholder="Search . . . ">
+    <button type="submit" class="ml-4 flex items-center justify-center bg-blue-500 rounded-lg px-6 text-white h-10">Cari</button>
+  </form>
   <div class="relative overflow-x-auto">
     <!-- Success Message -->
     @if (session('success'))

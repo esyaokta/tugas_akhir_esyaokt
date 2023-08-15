@@ -40,6 +40,7 @@ Route::middleware(['auth', 'user'])->group(function () {
     });
 
     Route::prefix('/barang')->group(function () {
+        Route::post('/caribarang', [BarangController::class, 'search'])->name('barang.search');
         Route::get('/', [BarangController::class, 'index'])->name('barang.index');
         Route::get('/{barang}', [BarangController::class, 'show'])->name('barang.show');
     });

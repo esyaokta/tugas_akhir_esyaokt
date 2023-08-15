@@ -1,23 +1,27 @@
 <x-admin.app>
   <x-slot name="header">
-    <h2 class="font-semibold text-3xl text-gray-800 leading-tight">
+    <h2 class="font-semibold text-3xl text-gray-800 leading-tight flex items-center justify-center mb-0">
       {{ __('Pengguna') }}
     </h2>
   </x-slot>
 
-  <div class="flex flex-col justify-center gap-10">
+  <div class="flex flex-col justify-center gap-2">
 
     <div class="flex justify-between">
       <h2 class="text-2xl font-semibold">Data user</h2>
       <div class="flex h-10">
         <a href="{{ route('admin.user.create') }}"
-          class="bg-gray-300 hover:bg-gray-400 transition-all duration-200 flex items-center gap-3 px-4 h-full">
+        class="bg-blue-500 hover:bg-blue-400 transition-all duration-200 rounded-lg text-white flex items-center gap-2 px-4 h-full">
           <i class="fa-solid fa-plus px-2"></i>
-          <span class="border-r border-black h-full"></span>
+          <span class="h-full"></span>
           Tambah User
         </a>
       </div>
     </div>
+    <form class="flex" action="">
+    <input class="w-80 h-10 rounded-lg mb-4" type="text" placeholder="Search . . . ">
+    <button type="submit" class="ml-4 flex items-center justify-center bg-blue-500 rounded-lg px-6 text-white h-10">Cari</button>
+  </form>
 
     <!-- Alert Message -->
     @if (session('success'))

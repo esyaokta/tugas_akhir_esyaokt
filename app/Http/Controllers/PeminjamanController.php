@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Jobs\notif;
 
 
 class PeminjamanController extends Controller
@@ -37,6 +38,19 @@ class PeminjamanController extends Controller
             return redirect()->back()->withErrors('Jam peminjaman harus diantara jam kerja');
         }
 
+        $date_request = $request->tanggal_pinjam;
+        $jam_pinjam = $request->jam_pinjam;
+        $jam_selesai = $request->jam_selesai;
+        $check_data = Peminjaman::where("tanggal_pinjam", $date_request)->get();
+        
+        foreach($check_data as $data){
+            for ($i=0; $i <= count($check_data); $i++) { 
+                if($date_request == $data->tanggal_pinjam[$i] && $jam_pinjam >= $data->jam_pinjam[$i] && $jam_pinjam <= $data->jam_selesai ){
+                    return redirect()->back()->withErrors('Jam peminjaman sudah di booking');
+                }
+            }
+        }
+
         $user = auth()->user();
 
         Peminjaman::create([
@@ -47,6 +61,7 @@ class PeminjamanController extends Controller
             'jam_selesai' => $request->jam_selesai,
         ]);
 
+        notif::dispatch();
         return redirect()->route('peminjaman.index')->with('success', 'Peminjaman berhasil diajukan');
     }
 

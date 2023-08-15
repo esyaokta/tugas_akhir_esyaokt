@@ -9,8 +9,8 @@
     <div class="max-w-7xl mx-auto px-24">
       <div class="mx-auto bg-white flex flex-col justify-center gap-16">
         <!-- Laboratorium SI -->
-        <div class="p-8 bg-gray-300 overflow-auto">
-          <p class="text-justify text-black text-lg">
+        <div class="p-8 bg-blue-500 text-white overflow-auto">
+          <p class="text-justify  text-lg">
             Laboratorium Sistem Informasi merupakan salah satu laboratorium riset yang berada di bawah kelompok keilmuan
             Applied Information System. . Laboratorium ini memfokuskan diri pada bidang pengembangan Sistem Informasi di
             Fakultas Ilmu Terapan pada Program Studi Sistem Informasi. Laboratorium ini dibangun pada tahun 2017 dan

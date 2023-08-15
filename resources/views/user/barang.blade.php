@@ -11,6 +11,11 @@
         <!-- Table -->
 
         <div class="relative overflow-x-auto shadow-md">
+          <form action="{{route('barang.search')}}" method="POST" class="flex items-center justify-between">
+            @csrf
+            <input type="text" name="carifwb" placeholder="Search . . ." class="w-full mb-4 rounded-l outline-none active:outline-none">
+            <button type="submit">Submit</button>
+          </form>
           <table class="w-full text-sm text-left dark:text-gray-400">
             <thead class="text-md text-gray-700 uppercase font-semibold border-b-2 border-black">
               <tr>
