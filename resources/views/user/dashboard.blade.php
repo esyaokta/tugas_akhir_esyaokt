@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout class="bg-blue-500">
   {{-- <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
@@ -7,7 +7,7 @@
 
   <div class="py-12">
     <div class="max-w-7xl mx-auto px-24">
-      <div class="mx-auto bg-white flex flex-col justify-center gap-16">
+      <div class="mx-auto bg-blue-500 flex flex-col justify-center gap-8">
         <!-- Laboratorium SI -->
         <div class="p-8 bg-blue-500 text-white overflow-auto">
           <p class="text-justify  text-lg">
