@@ -26,6 +26,11 @@ class UserController extends Controller
         return view('admin.user.create');
     }
 
+    public function search(Request $req) {
+        $users = User::where('nama', 'like', '%'.$req->search.'%')->paginate(10);
+        return view('admin.user.index', compact('users'));
+    }
+
     /**
      * Store a newly created resource in storage.
      */

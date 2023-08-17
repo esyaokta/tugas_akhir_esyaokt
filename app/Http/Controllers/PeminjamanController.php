@@ -70,6 +70,11 @@ class PeminjamanController extends Controller
         return view('admin.peminjaman', compact('peminjaman'));
     }
 
+    public function search(Request $req) {
+        $peminjaman = Peminjaman::where('nama_kegiatan', 'like', '%'.$req->search.'%')->paginate(10);
+        return view('admin.peminjaman', compact('peminjaman'));
+    }
+
     public function update(Request $request, string $id)
     {
         $request->validate([

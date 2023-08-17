@@ -91,4 +91,10 @@ class BarangController extends Controller
         return view('user.barang', compact('barang'));
     }
 
+    public function searchAdmin(Request $request)
+    {
+        $barang = Barang::where('jenis_barang', 'like', '%'.$request->search.'%')->paginate(10);   
+        return view('admin.barang', compact('barang'));
+    }
+
 }

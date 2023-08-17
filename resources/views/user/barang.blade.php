@@ -1,7 +1,7 @@
 <x-app-layout>
   <div class="py-20">
     <div class="max-w-7xl mx-auto px-12">
-      <div class="mx-auto bg-white flex flex-col justify-center gap-8">
+      <div class="mx-auto bg-white p-8 rounded-lg flex flex-col justify-center gap-8">
 
         <!-- Header -->
         <div class="font-bold text-3xl w-full border-b pb-4">
@@ -11,10 +11,10 @@
         <!-- Table -->
 
         <div class="relative overflow-x-auto shadow-md">
-          <form action="{{route('barang.search')}}" method="POST" class="flex items-center justify-between">
+          <form action="{{route('barang.search')}}" method="POST" class="flex items-center justify-between gap-x-4 px-4">
             @csrf
-            <input type="text" name="carifwb" placeholder="Search . . ." class="w-full mb-4 rounded-l outline-none active:outline-none">
-            <button type="submit">Submit</button>
+            <input type="text" name="carifwb" placeholder="Search . . ." class="w-full h-10 mb-4 rounded-lg outline-none active:outline-none">
+            <button class="flex items-center justify-center bg-blue-500 mb-4 h-10 px-2 rounded-lg text-sm text-white" type="submit">Submit</button>
           </form>
           <table class="w-full text-sm text-left dark:text-gray-400">
             <thead class="text-md text-gray-700 uppercase font-semibold border-b-2 border-black">

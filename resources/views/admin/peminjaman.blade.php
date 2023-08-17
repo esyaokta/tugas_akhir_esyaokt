@@ -4,8 +4,9 @@
       {{ __('Approval Peminjaman') }}
     </h2>
   </x-slot>
-  <form class="flex" action="">
-    <input class="w-80 h-10 rounded-lg mb-4" type="text" placeholder="Search . . . ">
+  <form class="flex" action="{{route('admin.peminjaman.search')}}" method="POST">
+    @csrf
+    <input name="search" class="w-80 h-10 rounded-lg mb-4" type="text" placeholder="Search . . . ">
     <button type="submit" class="ml-4 flex items-center justify-center bg-blue-500 rounded-lg px-6 text-white h-10">Cari</button>
   </form>
   <div class="relative overflow-x-auto">
@@ -118,12 +119,35 @@
                 data-modal-toggle="{{ 'defaultModal-' . $p->id }}" type="button">
                 <i class="fa-regular fa-pen-to-square"></i>
               </button>
-              <form action="{{ route('admin.peminjaman.destroy', ['id' => $p->id]) }}" method="post">
+              <form id="delete{{$p->id}}" action="{{ route('admin.peminjaman.destroy', ['id' => $p->id]) }}" method="post">
                 @method('DELETE')
                 @csrf
-                <button class="fa-regular fa-trash-can">
+                <button type="submit" class="fa-regular fa-trash-can">
                 </button>
               </form>
+              <script>
+            document.querySelector('#delete{{$p->id}}').onsubmit = function(e){
+      var form =this;
+    e.preventDefault();
+
+    Swal.fire({
+      title: 'Anda yakin akan menghapus data ? ',
+            text: "Data anda tidak dapat digunakan kembali.",
+            type: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, hapus data!',
+            cancelButtonText: 'Batal',
+  }).then((result) => {
+    if (result.value) {
+
+    form.submit('#from1');
+    }
+    })  
+  }
+      
+  </script>
             </td>
           </tr>
           <!-- Info user modal -->
@@ -230,4 +254,5 @@
       </tbody>
     </table>
   </div>
+ 
 </x-admin.app>

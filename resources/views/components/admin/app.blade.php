@@ -20,6 +20,8 @@
 
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/0b736e1e36.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.23/dist/sweetalert2.all.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.23/dist/sweetalert2.min.css" rel="stylesheet">
 
 </head>
 
@@ -42,5 +44,27 @@
     </main>
   </div>
 </body>
+<script>
+    document.querySelector('#delete').onsubmit = function(e){
+      var form =this;
+    e.preventDefault();
 
+    Swal.fire({
+      title: 'Anda yakin akan menghapus data ? ',
+            text: "Data anda tidak dapat digunakan kembali.",
+            type: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, hapus data!',
+            cancelButtonText: 'Batal',
+  }).then((result) => {
+    if (result.value) {
+
+    form.submit('#from1');
+    }
+    })  
+  }
+      
+  </script>
 </html>

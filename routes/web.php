@@ -57,6 +57,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         });
 
         Route::prefix('/barang')->group(function () {
+            Route::post('/searchAdmin', [BarangController::class, 'searchAdmin'])->name('admin.barang.search');
             Route::get('/', [BarangController::class, 'adminIndex'])->name('admin.barang.index');
             Route::get('/create', [BarangController::class, 'create'])->name('admin.barang.create');
             Route::post('/', [BarangController::class, 'store'])->name('admin.barang.store');
@@ -65,12 +66,14 @@ Route::middleware(['auth', 'admin'])->group(function () {
         });
 
         Route::prefix('/peminjaman')->group(function () {
+            Route::post('/search', [PeminjamanController::class, 'search'])->name('admin.peminjaman.search');
             Route::get('/', [PeminjamanController::class, 'adminIndex'])->name('admin.peminjaman.index');
             Route::post('/{id}/update', [PeminjamanController::class, 'update'])->name('admin.peminjaman.update');
             Route::delete('/{id}/delete', [PeminjamanController::class, 'destroy'])->name('admin.peminjaman.destroy');
         });
 
         Route::prefix('/user')->group(function () {
+            Route::post('/search', [UserController::class, 'search'])->name('admin.user.search');
            Route::get('/', [UserController::class, 'index'])->name('admin.user.index');
            Route::get('/create', [UserController::class, 'create'])->name('admin.user.create');
            Route::post('/', [UserController::class, 'store'])->name('admin.user.store');

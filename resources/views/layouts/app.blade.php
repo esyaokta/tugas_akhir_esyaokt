@@ -16,10 +16,16 @@
 
         <!-- Flowbite -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+        <script src="https://kit.fontawesome.com/0b736e1e36.js" crossorigin="anonymous"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.23/dist/sweetalert2.all.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.23/dist/sweetalert2.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-blue-300">
+        <div class=" bg-blue-300">
             @include('layouts.navigation')
 
             <!-- Page Heading -->

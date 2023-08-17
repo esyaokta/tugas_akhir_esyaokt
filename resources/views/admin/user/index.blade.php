@@ -18,8 +18,9 @@
         </a>
       </div>
     </div>
-    <form class="flex" action="">
-    <input class="w-80 h-10 rounded-lg mb-4" type="text" placeholder="Search . . . ">
+    <form class="flex" action="{{route('admin.user.search')}}" method="POST">
+      @csrf
+    <input name="search" class="w-80 h-10 rounded-lg mb-4" type="text" placeholder="Search . . . ">
     <button type="submit" class="ml-4 flex items-center justify-center bg-blue-500 rounded-lg px-6 text-white h-10">Cari</button>
   </form>
 
@@ -112,12 +113,35 @@
                 <button data-modal-target="{{ "edit-modal-".$u->id }}" data-modal-toggle="{{ "edit-modal-".$u->id }}"
                   class="fa-regular fa-pen-to-square" type="button">
                 </button>
-                <form action="{{ route('admin.user.destroy', ['id' => $u->id]) }}" method="post">
+                <form action="{{ route('admin.user.destroy', ['id' => $u->id]) }}" method="post" id="delete{{$u->id}}">
                   @method('DELETE')
                   @csrf
                   <button class="fa-regular fa-trash-can">
                   </button>
                 </form>
+                <script>
+    document.querySelector('#delete{{$u->id}}').onsubmit = function(e){
+      var form =this;
+    e.preventDefault();
+
+    Swal.fire({
+      title: 'Anda yakin akan menghapus data ? ',
+            text: "Data anda tidak dapat digunakan kembali.",
+            type: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, hapus data!',
+            cancelButtonText: 'Batal',
+  }).then((result) => {
+    if (result.value) {
+
+    form.submit('#from1');
+    }
+    })  
+  }
+      
+  </script>
               </td>
             </tr>
             <!-- Main modal -->

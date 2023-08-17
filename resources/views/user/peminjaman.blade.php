@@ -3,7 +3,7 @@
   <div class="max-w-7xl mx-auto ">
     <div class="flex justify-between">
       
-      <div class="mx-auto bg-white flex flex-col justify-center gap-8">
+      <div class="mx-auto bg-white px-20 py-10 rounded-lg mt-10 flex flex-col justify-center gap-8">
 
         <!-- Success Message -->
         @if (session('success'))
@@ -71,11 +71,11 @@
         </div>
 
         <!-- Form -->
-        <form action="{{ route('peminjaman.store') }}" method="POST" class="w-3/4">
+        <form class="w-full" action="{{ route('peminjaman.store') }}" method="POST" class="w-3/4">
           @csrf
 
           <!-- Nama Kegiatan -->
-          <div class="mb-6 flex flex-col gap-1">
+          <div class="mb-6 flex flex-col gap-1 w-full">
             <x-input-label for="nama_kegiatan" :value="__('Nama Kegiatan')" />
             <x-text-input id="nama_kegiatan" class="block mt-1 w-full" type="text" name="nama_kegiatan"
               :value="old('nama_kegiatan')" placeholder="Masukkan nama kegiatan anda" required autofocus
@@ -108,7 +108,7 @@
           </div>
 
           <!-- Submit-->
-          <button type="submit" class="px-8 py-2 bg-black rounded-lg text-white font-semibold "> Daftar </button>
+          <button type="submit" class="px-8 py-2 bg-blue-500 rounded-lg text-white font-semibold "> Daftar </button>
 
         </form>
       </div>
