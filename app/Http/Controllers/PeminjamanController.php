@@ -51,6 +51,18 @@ class PeminjamanController extends Controller
             }
         }
 
+        // check availability of the room
+        $peminjaman = Peminjaman::where('tanggal_pinjam', $request->tanggal_pinjam)->get();
+
+        foreach($peminjaman as $p){
+            if($request->jam_pinjam >= $p->jam_pinjam && $request->jam_pinjam <= $p->jam_selesai){
+                return redirect()->back()->withErrors('Ruangan tidak tersedia');
+            }
+            if($request->jam_selesai >= $p->jam_pinjam && $request->jam_selesai <= $p->jam_selesai){
+                return redirect()->back()->withErrors('Ruangan tidak tersedia');
+            }
+        }
+
         $user = auth()->user();
 
         Peminjaman::create([
