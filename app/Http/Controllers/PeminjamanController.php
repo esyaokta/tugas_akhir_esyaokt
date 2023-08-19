@@ -6,6 +6,7 @@ use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Jobs\notif;
+use App\Events\myEvents;
 
 
 class PeminjamanController extends Controller
@@ -73,7 +74,11 @@ class PeminjamanController extends Controller
             'jam_selesai' => $request->jam_selesai,
         ]);
 
-        notif::dispatch();
+        $total_peminjaman = Peminjaman::all()->count();
+        $message = $total_peminjaman;
+        event(new myEvents($message));
+
+
         return redirect()->route('peminjaman.index')->with('success', 'Peminjaman berhasil diajukan');
     }
 

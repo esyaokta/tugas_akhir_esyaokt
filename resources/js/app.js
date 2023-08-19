@@ -1,7 +1,29 @@
-import './bootstrap';
+window.Pusher = require('pusher-js');
+import Echo from "laravel-echo";
 
-import Alpine from 'alpinejs';
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: 'your-pusher-key',
+    cluster: 'eu',
+    encrypted: true
+});
 
-window.Alpine = Alpine;
+var notifications = [];
 
-Alpine.start();
+//...
+
+$(document).ready(function() {
+    if(Laravel.userId) {
+        //...
+        window.Echo.private(`App.User.${Laravel.userId}`)
+            .notification((notification) => {
+                addNotifications([notification], '#notifications');
+            });
+    }
+
+
+    Echo.channel('channel-name')
+    .listen('.App\\Notifications\\newNotif', (data) => {
+        console.log(data);
+    });
+});

@@ -1,20 +1,44 @@
-<?php 
-  use App\Jobs\notif;
-  use Illuminate\Support\Facades\DB;
 
-  // $count_notif="";
-  // $count_notif=notif::dispatch();
-  // print_r($count_notif);
+<script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
 
-  $ab = DB::table('peminjamans')->count();
-?>
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('94841b9df0f3d8aa0bd7', {
+      cluster: 'ap1'
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+      console.log("dataku",data)
+      // count unread notification
+      var totalCount =  data.message;
+      var count = parseInt($('.notif-count').attr('data-count'));
+      
+      $('.notif-count').attr('data-count', totalCount);
+      $('.notif-count').html(totalCount);
+
+      // save total to session storage
+      sessionStorage.setItem('totalNotif', totalCount);
+    });
+
+    $(document).ready(function(){
+      // get total notification from session storage
+      var totalNotif = sessionStorage.getItem('totalNotif');
+      $('.notif-count').attr('data-count', totalNotif);
+      $('.notif-count').html(totalNotif);
+    });
+  </script>
 <nav x-data="{ open: false }" class="bg-blue-400 ">
     <!-- Primary Navigation Menu -->
     <div class="flex items-center justify-between px-10">
     
       <div class="shrink-0 flex items-center">
         <a href="{{ route('dashboard') }}">
-          <x-application-logo class="block w-auto fill-current text-gray-800" />
+          <!-- <x-application-logo class="block w-auto fill-current text-gray-800" /> -->
+          <img src="{{url('logoku2.png')}}" style="height: 20%; width: 35%;"/>
         </a>
       </div>
 
@@ -62,8 +86,8 @@
       <div class="flex w-1/6">
         <div class="flex justify-center items-center text-xl pr-14 gap-8">
         <a href="{{ route('halaman.pemberitahuan') }}">
-          <i class="fa-solid fa-bell fa-xl text-blue-500">
-            <div class="absolute rounded-full -mt-4  ml-4 h-4 w-4 flex items-center justify-center bg-red-500 text-white text-xs">{{$ab}}</div>
+          <i class="fa-solid fa-bell fa-xl text-blue-500" id="notifications">
+            <div class="notif-count absolute rounded-full -mt-4  ml-4 h-4 w-4 flex items-center justify-center bg-red-500 text-white text-xs" data-count="0"></div>
           </i>        
         </a>
         </div>
