@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Peminjaman;
+use App\Models\Barang;
 use App\Http\Controllers\Controller;
 
 
@@ -12,9 +13,15 @@ class NotificationController extends Controller
     {
         $persetujuan = ['Disetujui', 'Ditolak', 'Menunggu']; // Ubah sesuai persetujuan yang ingin ditampilkan
 
-        $notifikasi = Peminjaman::whereIn('persetujuan', $persetujuan)->get();
+        $notifikasi = Peminjaman::where('persetujuan', 'Menunggu')->get();
 
-        return view('user.pemberitahuan', compact('notifikasi'));
+        $userId = auth()->user()->id;
+
+        $notifikasiUserId = Peminjaman::where('user_id', $userId)->get();
+
+        $barang = Barang::orderBy('id', 'desc')->get();
+
+        return view('user.pemberitahuan', compact(['notifikasi', 'barang', 'notifikasiUserId']));
     }
 
 }

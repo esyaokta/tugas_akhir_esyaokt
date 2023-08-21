@@ -74,9 +74,11 @@ class PeminjamanController extends Controller
             'jam_selesai' => $request->jam_selesai,
         ]);
 
-        $total_peminjaman = Peminjaman::all()->count();
-        $message = $total_peminjaman;
-        event(new myEvents($message));
+        // $total_peminjaman = Peminjaman::all()->count();
+        // $message = $total_peminjaman;
+        // event(new myEvents($message));
+
+        
 
 
         return redirect()->route('peminjaman.index')->with('success', 'Peminjaman berhasil diajukan');
